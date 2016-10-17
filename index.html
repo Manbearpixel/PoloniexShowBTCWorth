@@ -1,1 +1,44 @@
-My Page
+<doctype html>
+<html>
+<head>
+  <title>PoloniexShowBTCWorth</title>
+</head>
+<body>
+  <h1>PoloniexShowBTCWorth</h1>
+  <p>Excuse the lack of design here, barebones setup on Github in order to create a bookmarket link that can be saved</p>
+
+  <h2>What is a "Bookmarklet"</h2>
+  <p>A Bookmarklet is a bookmark that can run an action. Normal bookmarks are pages on the web that you want to favorite, or
+    save for later. A Bookmarklet is similar, as you can click it like a normal bookmark, but instead of redirecting you
+    to wherever you saved, it would instead run JavaScript on the current website.</p>
+  <p>Generally, bookmarklets are quick actions that can assist you with whatever it is you want help with. This can be risky of course,
+    because JavaScript can make requests and run actions on your behalf (your current browising session) and you put faith into whatever
+    the action it is doing.</p>
+
+  <h2>So what is this PoloniexShowBTCWorth?</h2>
+  <p>It is a bookmarklet that, when clicked, will update the rows of altcoins on the Poloniex exchange and show the altcoin's current price
+    along with the most recent USD/BTC BUY order made on Poloniex through their API.</p>
+  <p>It will essentially show you an altcoin's USD price (in btc) which will help you determine the worth of a coin. It is not necessary but it is
+    a feature I personally wish it had so this is why I made it</p>
+
+  <h2>Is there an open source for this?</h2>
+  <p>There is, and it is open source to allow you to verify the integrity of this Bookmarklet. You can also inspect the bookmarklet below and view the
+    URL contents to ensure it is 100% safe. It is recommended you do this whenever you save a Bookmarklet!</p>
+
+  <ul>
+    <li><a href="https://github.com/Manbearpixel/PoloniexShowBTCWorth" target="_blank">GitHub Repo</a></li>
+    <li><a href="https://github.com/Manbearpixel/PoloniexShowBTCWorth/PoloniexShowBTCWorth.js" target="_blank">JavaScript Source</a></li>
+  </ul>
+
+  <h2>Bookmarklet</h2>
+  <p>Simply drag the button/link below into your Bookmark Toolbar and bam! It is now saved and when you click it on Poloniex it will refresh
+    the value of an altcoin every 10 seconds. Please note that during that refresh buffer the altcoin price may change, which will remove the BTC/USD
+    value temporarily. Do not worry, as the BTC/USD value will come back after that refresh period.</p>
+  <p><a href="javascript:(function(){if(1==window.__superAwesomeThingy)return%20console.warn(%22--%20SuperAwesomeThingy%20BTC%20shower%20is%20already%20active!%22),console.info(%22--%20Disabling%20SuperAwesomeThingy%20BTC%20shower!%22),clearInterval(window.__superAwesomeThingID),window.__superAwesomeThingID=null,window.__superAwesomeThingy=!1,!1;window.__superAwesomeThingy=!0;var%20runSwitch=function(currentBTC){console.info(%22--%20adjusting%20BTC%20value%20--%22),jQuery(%22%23marketBTC%20%3E%20tbody%20%20%3E%20tr%22).each(function(){var%20currentRow=jQuery(this),currentPriceCol=currentRow.find(%22.price%22);if(-1!=currentPriceCol.text().indexOf(%22;;%22))var%20splitter=currentPriceCol.text().split(%22;;%22),parsedPrice=parseFloat(splitter[0]).toFixed(8);else%20var%20parsedPrice=parseFloat(currentPriceCol.text()).toFixed(8);var%20calculatedBTC=(parsedPrice*currentBTC).toFixed(8),newPriceText=parsedPrice+%22;;\n($%22+calculatedBTC+%22%20btc)%22;return%20currentPriceCol.text(newPriceText),!0})},fetchBTCOrder=function(){jQuery.get(%22https://public.poloniex.com/%3Fcommand=returnTradeHistory%26currencyPair=USDT_BTC%22,function(r){var%20recentOrders=r,recentBuy=recentOrders[100],currentBTCRate=parseFloat(recentBuy.rate).toFixed(2);runSwitch(currentBTCRate)})};fetchBTCOrder(),window.__superAwesomeThingID=setInterval(fetchBTCOrder,1e4),console.info(%22--%20Poloniex%20BTC%20price%20shower-thingy%20by%20Polo%20User%20%40PkMnRed%20--%22)})();">Poloniex | Show Altcoin BTC</a></p>
+
+  <h2>Who can I thank?</h2>
+  <p>Feel free to send rep or BTC to @PkMnRed on Poloniex!</p>
+
+  <h4>BTC Address</h4>
+  <code>1CKRYeDxvV8gwNw946aaaheqy5fx7eQd4u</code>
+</body>
